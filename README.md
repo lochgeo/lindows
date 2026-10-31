@@ -21,21 +21,19 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 | `clear` | `src/meta.ps1` | Clear the terminal screen (`cls` shim in CMD, `Clear-Host` in PowerShell) |
 | `lindows` | `src/meta.ps1` | Meta CLI (`lindows list`, `lindows doctor`, `lindows --version`) |
 
-## Pairing with `Microsoft.Coreutils` (`uutils`) & `ripgrep`
+## Pairing with `uutils` Coreutils & `ripgrep`
 
-For the rest of the standard GNU/Linux toolset (`ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `find`, `xargs`, `basename`, `dirname`, etc.) and fast code search (`rg`), you can install the native Windows Rust ports via `winget`:
+For the rest of the standard GNU/Linux toolset (`ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, etc.) and fast code search (`rg`), you can install the native Windows Rust ports via `winget`:
 
 ```powershell
-# All-in-one Microsoft package (uutils coreutils + findutils + grep)
-winget install Microsoft.Coreutils
-
-# Or install individual packages:
+# GNU coreutils (ls, cat, cp, mv, rm, wc, sort, uniq, cut, tr, etc.)
 winget install uutils.coreutils
-winget install uutils.findutils
+
+# ripgrep (rg)
 winget install BurntSushi.ripgrep.MSVC
 ```
 
-Lindows works standalone with zero dependencies (providing `grep`, `head`, `tail`, `which`, `tree`, `man`, `clear` out of the box) or side-by-side with `Microsoft.Coreutils` and `ripgrep` across both PowerShell and CMD.
+Lindows works standalone with zero dependencies (providing `grep`, `head`, `tail`, `which`, `tree`, `man`, `clear` out of the box) or side-by-side with `uutils.coreutils` and `ripgrep` across both PowerShell and CMD.
 
 ## Project Structure
 

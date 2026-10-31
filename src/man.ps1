@@ -223,7 +223,7 @@ function Invoke-LindowsMan {
             $out.Add("No manual entry for $t")
             $out.Add("")
             $out.Add("    PowerShell equivalent: $($core[$t])")
-            $out.Add("    Or install GNU coreutils via: winget install Microsoft.Coreutils")
+            $out.Add("    Or install GNU coreutils via: winget install uutils.coreutils")
             return 3
         }
         $out.Add("No manual entry for $t")
