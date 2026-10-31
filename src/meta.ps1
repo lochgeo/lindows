@@ -11,13 +11,14 @@ function Invoke-LindowsMeta {
         '' {
             Write-Output @"
 Lindows $script:LindowsVersion - Linux commands for Windows (PowerShell + CMD).
-Provided: head, tail, which, tree, man, clear, lindows
+Provided: grep, head, tail, which, tree, man, clear, lindows
 Use 'lindows list', 'lindows doctor', or '<command> --help'.
 "@
             $global:LASTEXITCODE = 0
         }
         'list' {
             Write-Output @"
+grep     - search for patterns in files or input
 head     - output the first part of files
 tail     - output the last part of files
 which    - locate commands on PATH

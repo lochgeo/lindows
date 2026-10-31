@@ -24,6 +24,19 @@ try {
     $sampleFile = Join-Path $tmpDir 'lines.txt'
     [System.IO.File]::WriteAllLines($sampleFile, @('line1','line2','line3','line4','line5'))
 
+    # grep tests
+    $g1 = (grep 'line[24]' $sampleFile) -join ','
+    Assert-Equal 'grep regex match' $g1 'line2,line4'
+
+    $g2 = (grep -n -i 'LINE3' $sampleFile) -join ''
+    Assert-Equal 'grep -n -i line number and ignore case' $g2 '3:line3'
+
+    $g3 = (grep -c 'line' $sampleFile) -join ''
+    Assert-Equal 'grep -c count' $g3 '5'
+
+    $g4 = ('foo','bar','baz' | grep -v 'bar') -join ','
+    Assert-Equal 'grep -v pipeline invert match' $g4 'foo,baz'
+
     # head tests
     $h1 = (head -n 2 $sampleFile) -join ','
     Assert-Equal 'head -n 2 file' $h1 'line1,line2'

@@ -12,6 +12,7 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 
 | Command | Source File | Description |
 | :--- | :--- | :--- |
+| `grep` | `src/grep.ps1` | Search for patterns in files or piped input (`-i`, `-v`, `-n`, `-c`, `-l`, `-r`, `-F`, `-E`, `-w`, `-A`/`-B`/`-C`) |
 | `head` | `src/head.ps1` | Output the first part of files or piped input (`-n`, `-c`, `-q`, `-v`) |
 | `tail` | `src/tail.ps1` | Output the last part of files or piped input (`-n`, `-n +K`, `-c`, `-f`, `-q`, `-v`) |
 | `which` | `src/which.ps1` | Locate executables on Windows `PATH` (`-a`, `-i` for PowerShell aliases) |
@@ -20,22 +21,21 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 | `clear` | `src/meta.ps1` | Clear the terminal screen (`cls` shim in CMD, `Clear-Host` in PowerShell) |
 | `lindows` | `src/meta.ps1` | Meta CLI (`lindows list`, `lindows doctor`, `lindows --version`) |
 
-## Pairing with `uutils` Coreutils / Findutils / Grep
+## Pairing with `Microsoft.Coreutils` (`uutils`) & `ripgrep`
 
-For the rest of the standard GNU/Linux toolset (`grep`, `find`, `xargs`, `ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, etc.), you can install the native Windows Rust ports via `winget`:
+For the rest of the standard GNU/Linux toolset (`ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `find`, `xargs`, `basename`, `dirname`, etc.) and fast code search (`rg`), you can install the native Windows Rust ports via `winget`:
 
 ```powershell
-# GNU coreutils (ls, cat, cp, mv, rm, wc, sort, uniq, cut, tr, head, tail, etc.)
+# All-in-one Microsoft package (uutils coreutils + findutils + grep)
+winget install Microsoft.Coreutils
+
+# Or install individual packages:
 winget install uutils.coreutils
-
-# GNU findutils (find, xargs, locate)
 winget install uutils.findutils
-
-# grep / ripgrep
 winget install BurntSushi.ripgrep.MSVC
 ```
 
-Lindows fills in the remaining everyday commands (`which`, `tree`, `man`, `clear`, plus zero-dependency `head` and `tail` shims) that works seamlessly across both PowerShell and CMD.
+Lindows works standalone with zero dependencies (providing `grep`, `head`, `tail`, `which`, `tree`, `man`, `clear` out of the box) or side-by-side with `Microsoft.Coreutils` and `ripgrep` across both PowerShell and CMD.
 
 ## Project Structure
 
@@ -46,6 +46,7 @@ lindows/
 ├── uninstall.ps1         # Cleanly removes Lindows
 ├── src/
 │   ├── common.ps1        # Shared stdin / file / pipeline readers
+│   ├── grep.ps1          # grep command
 │   ├── head.ps1          # head command
 │   ├── tail.ps1          # tail command
 │   ├── which.ps1         # which command

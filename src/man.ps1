@@ -10,16 +10,47 @@ SYNOPSIS
 
 DESCRIPTION
     Lindows provides essential Linux utilities natively on Windows:
-    head, tail, which, tree, man, clear, and lindows.
+    grep, head, tail, which, tree, man, clear, and lindows.
 
 SUBCOMMANDS
     list      list the commands lindows provides
     doctor    check the installation (PATH, profile hook, shims)
 
 SEE ALSO
-    head(1), tail(1), which(1), tree(1), man(1), clear(1)
+    grep(1), head(1), tail(1), which(1), tree(1), man(1), clear(1)
 
 Lindows 1.0.0                    2026                          LINDOWS(1)
+'@
+'grep' = @'
+GREP(1)                         User Commands                        GREP(1)
+
+NAME
+    grep - print lines that match patterns
+
+SYNOPSIS
+    grep [-E|-F] [-ivwxnclLorHhq] [-e PATTERN] [-m NUM] [-A NUM] [-B NUM]
+         [-C NUM] [--include=GLOB] [--exclude=GLOB] [PATTERN] [FILE]...
+
+DESCRIPTION
+    grep searches for PATTERN in each FILE or standard input and prints
+    each line that matches.
+
+OPTIONS
+    -E, --extended-regexp     PATTERN is an extended regular expression
+    -F, --fixed-strings       PATTERN is a literal string
+    -i, --ignore-case         case-insensitive search
+    -v, --invert-match        select non-matching lines
+    -w, --word-regexp         match whole words only
+    -x, --line-regexp         match whole lines only
+    -n, --line-number         prefix each line with its 1-based line number
+    -c, --count               print only a count of matching lines per file
+    -l, --files-with-matches  print only names of files with matches
+    -L, --files-without-match print only names of files with no matches
+    -o, --only-matching       print only the matched parts of a matching line
+    -r, -R, --recursive       search directories recursively
+    -A, -B, -C NUM            print NUM lines of trailing/leading/both context
+
+Lindows 1.0.0                    2026                            GREP(1)
 '@
 'head' = @'
 HEAD(1)                         User Commands                        HEAD(1)
@@ -149,7 +180,7 @@ function Invoke-LindowsMan {
     while ($k -lt $ArgLine.Count) {
         $a = $ArgLine[$k]; $k++
         if ($a -eq '--') { foreach ($r in @($ArgLine[$k..($ArgLine.Count - 1)])) { $names += $r }; break }
-        switch -Regex ($a) {
+        switch -Regex -CaseSensitive ($a) {
             '^--apropos$|^-k$' { $apropos = $true }
             '^--whatis$|^-f$' { $whatis = $true }
             '^--path$|^--where$|^--whereis$|^-w$' { $where = $true }

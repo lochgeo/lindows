@@ -18,6 +18,7 @@ Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Lindows.psm1') -Destination $in
 Copy-Item -Path (Join-Path $PSScriptRoot 'src\*.ps1') -Destination $srcDir -Force
 
 $shimCommands = @{
+    'grep'    = 'Invoke-LindowsGrep'
     'head'    = 'Invoke-LindowsHead'
     'tail'    = 'Invoke-LindowsTail'
     'which'   = 'Invoke-LindowsWhich'

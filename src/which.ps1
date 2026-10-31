@@ -7,7 +7,7 @@ function Invoke-LindowsWhich {
     $names = @()
 
     foreach ($a in $ArgLine) {
-        switch -Regex ($a) {
+        switch -Regex -CaseSensitive ($a) {
             '^(--all|-a)$' { $all = $true }
             '^(--read-alias|-i)$' { $readAlias = $true }
             '^--skip-alias$' { $skipAlias = $true }

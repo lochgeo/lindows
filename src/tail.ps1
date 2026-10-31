@@ -32,9 +32,9 @@ With more than one FILE, precede each with a header giving the file name.
         if (-not $noMoreOpts -and $a -eq '--') { $noMoreOpts = $true; continue }
         if (-not $noMoreOpts -and $a -match '^--help$|^-h$') { Write-Output $usage; return 0 }
         if (-not $noMoreOpts -and $a -eq '--version') { Write-Output "tail (Lindows) $script:LindowsVersion"; return 0 }
-        if (-not $noMoreOpts -and $a -match '^--follow$|^-f$|^-F$') { $follow = $true; continue }
-        if (-not $noMoreOpts -and $a -match '^--quiet$|^--silent$|^-q$') { $quiet = $true; $verbose = $false; continue }
-        if (-not $noMoreOpts -and $a -match '^--verbose$|^-v$') { $verbose = $true; $quiet = $false; continue }
+        if (-not $noMoreOpts -and $a -cmatch '^--follow$|^-f$|^-F$') { $follow = $true; continue }
+        if (-not $noMoreOpts -and $a -cmatch '^--quiet$|^--silent$|^-q$') { $quiet = $true; $verbose = $false; continue }
+        if (-not $noMoreOpts -and $a -cmatch '^--verbose$|^-v$') { $verbose = $true; $quiet = $false; continue }
 
         if (-not $noMoreOpts -and $a -match '^--lines=(.+)$') {
             $linesSpec = $Matches[1]; $bytesSpec = $null; continue
