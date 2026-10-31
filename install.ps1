@@ -107,12 +107,12 @@ if (-not $NoProfile) {
 if (-not $SkipExtras) {
     $winget = Get-Command winget.exe -ErrorAction SilentlyContinue
     if ($winget) {
-        foreach ($pkg in @('uutils.coreutils', 'BurntSushi.ripgrep.MSVC')) {
+        foreach ($pkg in @('Microsoft.Coreutils', 'BurntSushi.ripgrep.MSVC')) {
             Write-Host "[..] Ensuring $pkg is installed via winget..."
             & winget.exe install --id $pkg --exact --accept-source-agreements --accept-package-agreements
         }
     } else {
-        Write-Host "[warn] winget not found; skipping uutils.coreutils and ripgrep install."
+        Write-Host "[warn] winget not found; skipping Microsoft.Coreutils and ripgrep install."
     }
 }
 

@@ -4,29 +4,29 @@ Lightweight Linux commands made available in Windows (PowerShell + CMD), organiz
 
 🌐 **Documentation & Project Page:** [https://lochgeo.github.io/lindows/](https://lochgeo.github.io/lindows/)
 
-## One-Command Install (Recommended)
+## Quick Install
 
-Install **Lindows** (`grep`, `find`, `head`, `tail`, `wc`, `touch`, `cat`, `rm`, `mkdir`, `lsof`, `pkill`, `which`, `tree`, `man`, `clear`), **GNU Coreutils** (`uutils.coreutils`), and **ripgrep** (`rg`) in a single command:
+Want to try Lindows? Open PowerShell and run this one-liner to install **Lindows**, **GNU Coreutils**, and **ripgrep** in one go:
 
 ```powershell
 irm https://raw.githubusercontent.com/lochgeo/lindows/main/install.ps1 | iex
 ```
 
-Or if you have already cloned this repo:
+That's it!
 
-```powershell
-.\install.ps1
-```
-
-*(Pass `-SkipExtras` to `.\install.ps1` if you only want the Lindows shims without running `winget` for `uutils.coreutils` and `ripgrep`.)*
+*(Or if you've cloned this repo locally, run `.\install.ps1`. Pass `-SkipExtras` if you only want the Lindows shims without running `winget` for `Microsoft.Coreutils` and `ripgrep`.)*
 
 ---
 
-## Motivation
+## Motivation — Why `Microsoft.Coreutils` Alone Isn't Enough
 
-When running AI coding agents on Windows, almost all of them naturally assume they are operating in a Linux or macOS environment. They frequently invoke standard Unix commands—such as `grep`, `find . -name "*.ts"`, `head`, `tail`, `wc -l`, `rm -rf`, `mkdir -p`, `lsof -i :3000`, etc.—expecting them to just work, and fail or waste turns when those commands aren't found or collide with incompatible Windows built-ins (`FIND.EXE`, PowerShell's `rm`/`mkdir`/`cat` aliases).
+When running AI coding agents on Windows (Claude Code, OpenCode, Cursor, Codex, etc.), almost all of them naturally assume they are operating in a Linux or macOS environment.
 
-**Lindows** is a lightweight shim project built to bridge that gap so coding agents (and developers) running natively on Windows can find and run the Unix tools they expect.
+Even if you install `Microsoft.Coreutils` via `winget`, coding agents still fail constantly on Windows because of **three major gaps**:
+
+1. **PowerShell Built-in Alias Collisions:** PowerShell aliases and functions take higher precedence than `PATH` executables. Even with `Microsoft.Coreutils` installed, when an agent runs `rm -rf dist`, `mkdir -p a/b/c`, or `cat -n file.txt`, PowerShell intercepts the command with its own built-in aliases (`Remove-Item`, `mkdir`, `Get-Content`) and crashes on the Unix flags! **Lindows overrides those colliding PowerShell aliases so Unix flags work.**
+2. **`System32\find.exe` & `tree.com` Shadowing:** Windows ships legacy `C:\Windows\System32\find.exe` and `tree.com` at the top of the system `PATH`. When an agent runs `find . -name "*.ts"` or `tree -L 2 -I node_modules`, Windows invokes the legacy DOS binaries and fails (`FIND: Parameter format not correct`). **Lindows intercepts `find` and `tree` so Unix syntax works.**
+3. **Tools Not Included in `Microsoft.Coreutils`:** `Microsoft.Coreutils` only ships basic file/text coreutils. It **does not include** `grep`, `which`, `lsof` (for `lsof -i :3000` port checks), `pkill` / `killall` (for stopping background dev servers), `tree`, or `man`. **Lindows provides all of them out of the box.**
 
 ## Commands Included in Lindows
 
@@ -49,13 +49,13 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 | `clear` | `src/meta.ps1` | Clear the terminal screen (`cls` shim in CMD, `Clear-Host` in PowerShell) |
 | `lindows` | `src/meta.ps1` | Meta CLI (`lindows list`, `lindows doctor`, `lindows --version`) |
 
-## Pairing with `uutils` Coreutils & `ripgrep`
+## Pairing with `Microsoft.Coreutils` & `ripgrep`
 
-The installer automatically installs `uutils.coreutils` and `ripgrep` via `winget` so your environment also has the rest of the standard GNU/Linux toolset (`ls`, `cp`, `mv`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, `rg`, etc.). You can also install them manually:
+The installer automatically installs `Microsoft.Coreutils` and `ripgrep` via `winget` so your environment also has the rest of the standard GNU/Linux toolset (`ls`, `cp`, `mv`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, `rg`, etc.). You can also install them manually:
 
 ```powershell
-# GNU coreutils (ls, cp, mv, sort, uniq, cut, tr, etc.)
-winget install uutils.coreutils
+# GNU coreutils for Windows (ls, cp, mv, sort, uniq, cut, tr, etc.)
+winget install Microsoft.Coreutils
 
 # ripgrep (rg)
 winget install BurntSushi.ripgrep.MSVC

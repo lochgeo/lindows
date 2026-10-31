@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RM(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a class="active" href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>RM(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>RM(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">rm &mdash; remove files or directories</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>rm [-r] [-f] [-v] FILE...</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Remove (unlink) the <em>FILE</em>(s). Replaces PowerShell's default <code>rm</code> alias (<code>Remove-Item</code>) which fails whenever an AI agent passes combined Unix flags like <code>rm -rf</code> or <code>rm -f</code>.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-r, -R, --recursive</div><div class="man-opt-desc">Remove directories and their contents recursively.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-f, --force</div><div class="man-opt-desc">Ignore nonexistent files and arguments, never prompt.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-d, --dir</div><div class="man-opt-desc">Remove empty directories.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-v, --verbose</div><div class="man-opt-desc">Explain what is being removed.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--help, --version</div><div class="man-opt-desc">Display help or version information and exit.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">rm -rf dist/ build/</div><div class="man-ex-comment"># Recursively force-delete directories without error if missing</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">rm -f temp.log</div><div class="man-ex-comment"># Delete a file silently even if it doesn't exist</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/fs.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

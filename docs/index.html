@@ -5,179 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lindows — Unix Commands for Windows & AI Coding Agents</title>
   <meta name="description" content="Lightweight Unix commands (grep, find, head, tail, wc, touch, cat, rm, mkdir, lsof, pkill, which, tree, man) for Windows PowerShell & CMD, built for AI coding agents." />
-  <style>
-    :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --border: #30363d;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #58a6ff;
-      --accent-glow: rgba(88, 166, 255, 0.15);
-      --green: #3fb950;
-      --code-bg: #010409;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 0 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .badge {
-      display: inline-block;
-      background: var(--accent-glow);
-      color: var(--accent);
-      border: 1px solid rgba(88, 166, 255, 0.4);
-      border-radius: 999px;
-      padding: 0.25rem 0.85rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: 2.75rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-    }
-    .subtitle {
-      color: var(--muted);
-      font-size: 1.15rem;
-      max-width: 680px;
-      margin: 0 auto 2rem;
-    }
-    .install-box {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: left;
-      position: relative;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-    .install-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--green);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .install-cmd {
-      font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
-      font-size: 0.95rem;
-      color: var(--text);
-      overflow-x: auto;
-      white-space: nowrap;
-      padding-right: 4.5rem;
-    }
-    .copy-btn {
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .copy-btn:hover {
-      border-color: var(--accent);
-      background: #1f2630;
-    }
-    section {
-      margin-top: 3rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
-    p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .card p:last-child { margin-bottom: 0; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      text-align: left;
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.95rem;
-    }
-    th {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-      font-weight: 600;
-    }
-    td { color: var(--muted); }
-    code {
-      font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
-      background: rgba(110, 118, 129, 0.2);
-      color: var(--text);
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      font-size: 0.88em;
-    }
-    pre {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem 1.25rem;
-      overflow-x: auto;
-      margin: 0.75rem 0 1.25rem;
-    }
-    pre code {
-      background: none;
-      padding: 0;
-      font-size: 0.9rem;
-    }
-    footer {
-      margin-top: 4rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
@@ -190,30 +18,37 @@
 
       <div class="install-box">
         <div class="install-label">
-          <span>One-Command Install (Lindows + uutils.coreutils + ripgrep)</span>
+          <span>Want to try Lindows? Open PowerShell and run this one-liner to install Lindows, GNU Coreutils and ripgrep in one go:</span>
         </div>
         <div class="install-cmd" id="install-cmd">irm https://raw.githubusercontent.com/lochgeo/lindows/main/install.ps1 | iex</div>
         <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
       </div>
+      <p style="margin-top: 0.85rem; color: var(--green); font-weight: 600;">That's it!</p>
     </header>
 
     <section>
-      <h2>Why Lindows?</h2>
+      <h2>Why Lindows? (And Why <code>Microsoft.Coreutils</code> Alone Isn't Enough)</h2>
       <div class="card">
         <p>
-          When running AI coding agents on Windows (such as Claude Code, OpenCode, Cursor, Codex, etc.), almost all of them naturally assume they are operating in a Linux or macOS environment.
+          When running AI coding agents on Windows (Claude Code, OpenCode, Cursor, Codex, etc.), almost all of them naturally assume they are operating in a Linux or macOS environment.
         </p>
         <p>
-          They reflexively run commands like <code>grep -rn</code>, <code>find . -name "*.ts"</code>, <code>head -n 20</code>, <code>tail -n 50</code>, <code>wc -l</code>, <code>rm -rf</code>, <code>mkdir -p</code>, or <code>lsof -i :3000</code> — and either fail or waste turns when those commands aren't found or collide with incompatible Windows built-ins (<code>FIND.EXE</code>, PowerShell's <code>rm</code> / <code>mkdir</code> / <code>cat</code> aliases).
+          Even if you install <code>Microsoft.Coreutils</code> via <code>winget</code>, coding agents still fail constantly on Windows because of <strong>three major gaps</strong>:
         </p>
         <p>
-          <strong>Lindows</strong> is a lightweight, modular shim project that fills that gap across both PowerShell and <code>cmd.exe</code>.
+          <strong>1. PowerShell Alias Collisions:</strong> PowerShell aliases take precedence over <code>PATH</code> executables. Even with <code>Microsoft.Coreutils</code> installed, when an agent runs <code>rm -rf dist</code>, <code>mkdir -p a/b/c</code>, or <code>cat -n file.txt</code>, PowerShell intercepts the command with its own built-in aliases (<code>Remove-Item</code>, <code>mkdir</code>, <code>Get-Content</code>) and crashes on the Unix flags! Lindows overrides those colliding aliases so Unix flags work.
+        </p>
+        <p>
+          <strong>2. <code>System32\find.exe</code> &amp; <code>tree.com</code> Shadowing:</strong> Windows places legacy DOS <code>find.exe</code> and <code>tree.com</code> at the top of the system <code>PATH</code>. When an agent runs <code>find . -name "*.ts"</code> or <code>tree -L 2 -I node_modules</code>, Windows invokes the legacy binaries and fails. Lindows intercepts both so Unix expressions work natively.
+        </p>
+        <p>
+          <strong>3. Missing Non-Coreutils Tools:</strong> <code>Microsoft.Coreutils</code> does not ship <code>grep</code>, <code>which</code>, <code>lsof</code> (for <code>lsof -i :3000</code> port checks), <code>pkill</code> / <code>killall</code> (for stopping background dev servers), <code>tree</code>, or <code>man</code>. Lindows provides all of them out of the box.
         </p>
       </div>
     </section>
 
     <section>
-      <h2>Commands Included</h2>
+      <h2>Commands Included (Click any command for its Manual Page)</h2>
       <table>
         <thead>
           <tr>
@@ -224,82 +59,82 @@
         </thead>
         <tbody>
           <tr>
-            <td><code>grep</code></td>
+            <td><a href="commands/grep.html"><code>grep(1)</code></a></td>
             <td><code>src/grep.ps1</code></td>
             <td>Search files or piped input (<code>-i</code>, <code>-v</code>, <code>-n</code>, <code>-c</code>, <code>-l</code>, <code>-L</code>, <code>-o</code>, <code>-r</code>, <code>-F</code>, <code>-E</code>, <code>-w</code>, <code>-x</code>, <code>-A</code>/<code>-B</code>/<code>-C</code>, <code>--include</code>, <code>--exclude</code>)</td>
           </tr>
           <tr>
-            <td><code>find</code></td>
+            <td><a href="commands/find.html"><code>find(1)</code></a></td>
             <td><code>src/find.ps1</code></td>
             <td>Search directory trees without hitting Windows <code>FIND.EXE</code> (<code>-name</code>, <code>-iname</code>, <code>-path</code>, <code>-type f|d</code>, <code>-maxdepth</code>, <code>-mindepth</code>, <code>-not</code>/<code>!</code>, <code>-empty</code>, <code>-delete</code>)</td>
           </tr>
           <tr>
-            <td><code>head</code></td>
+            <td><a href="commands/head.html"><code>head(1)</code></a></td>
             <td><code>src/head.ps1</code></td>
             <td>Output the first part of files or piped input (<code>-n NUM</code>, <code>-n -NUM</code>, <code>-c BYTES</code>, <code>-q</code>, <code>-v</code>)</td>
           </tr>
           <tr>
-            <td><code>tail</code></td>
+            <td><a href="commands/tail.html"><code>tail(1)</code></a></td>
             <td><code>src/tail.ps1</code></td>
             <td>Output the last part of files or piped input (<code>-n NUM</code>, <code>-n +NUM</code>, <code>-c BYTES</code>, <code>-f</code>, <code>-q</code>, <code>-v</code>)</td>
           </tr>
           <tr>
-            <td><code>wc</code></td>
+            <td><a href="commands/wc.html"><code>wc(1)</code></a></td>
             <td><code>src/wc.ps1</code></td>
             <td>Count lines, words, characters, and bytes (<code>-l</code>, <code>-w</code>, <code>-c</code>, <code>-m</code>)</td>
           </tr>
           <tr>
-            <td><code>touch</code></td>
+            <td><a href="commands/touch.html"><code>touch(1)</code></a></td>
             <td><code>src/touch.ps1</code></td>
             <td>Create empty files or update timestamps (<code>-c</code>, <code>-a</code>, <code>-m</code>)</td>
           </tr>
           <tr>
-            <td><code>cat</code></td>
+            <td><a href="commands/cat.html"><code>cat(1)</code></a></td>
             <td><code>src/fs.ps1</code></td>
             <td>Concatenate and print files with Unix flags (<code>-n</code>, <code>-b</code>, <code>-s</code>, <code>-E</code>)</td>
           </tr>
           <tr>
-            <td><code>rm</code></td>
+            <td><a href="commands/rm.html"><code>rm(1)</code></a></td>
             <td><code>src/fs.ps1</code></td>
             <td>Remove files and directories with Unix flags (<code>rm -rf</code>, <code>rm -r</code>, <code>rm -f</code>, <code>rm -v</code>)</td>
           </tr>
           <tr>
-            <td><code>mkdir</code></td>
+            <td><a href="commands/mkdir.html"><code>mkdir(1)</code></a></td>
             <td><code>src/fs.ps1</code></td>
             <td>Create directories with Unix flags (<code>mkdir -p</code>, <code>mkdir -v</code>)</td>
           </tr>
           <tr>
-            <td><code>lsof</code></td>
+            <td><a href="commands/lsof.html"><code>lsof(1)</code></a></td>
             <td><code>src/proc.ps1</code></td>
             <td>Inspect active network ports and owning PIDs (<code>lsof -i :3000</code>, <code>lsof -t -i :3000</code>, <code>lsof -p PID</code>)</td>
           </tr>
           <tr>
-            <td><code>pkill</code> / <code>killall</code></td>
+            <td><a href="commands/pkill.html"><code>pkill(1)</code></a></td>
             <td><code>src/proc.ps1</code></td>
-            <td>Find or stop processes by name or command line (<code>pkill -f</code>, <code>pkill -l</code>, <code>pkill -c</code>)</td>
+            <td>Find or stop processes by name or command line (<code>pkill -f</code>, <code>pkill -l</code>, <code>pkill -c</code>, <code>killall</code>)</td>
           </tr>
           <tr>
-            <td><code>which</code></td>
+            <td><a href="commands/which.html"><code>which(1)</code></a></td>
             <td><code>src/which.ps1</code></td>
             <td>Locate executables on Windows <code>PATH</code> (<code>-a</code>, <code>-i</code> for PowerShell aliases)</td>
           </tr>
           <tr>
-            <td><code>tree</code></td>
+            <td><a href="commands/tree.html"><code>tree(1)</code></a></td>
             <td><code>src/tree.ps1</code></td>
             <td>Recursive directory tree viewer (<code>-a</code>, <code>-d</code>, <code>-L</code>, <code>-P</code>, <code>-I</code>, <code>--dirsfirst</code>, <code>-h</code>, <code>-s</code>, <code>-D</code>)</td>
           </tr>
           <tr>
-            <td><code>man</code></td>
+            <td><a href="commands/man.html"><code>man(1)</code></a></td>
             <td><code>src/man.ps1</code></td>
             <td>Embedded manual pages (<code>-f</code>, <code>-k</code>, <code>-w</code>) and PowerShell pointers</td>
           </tr>
           <tr>
-            <td><code>clear</code></td>
+            <td><a href="commands/clear.html"><code>clear(1)</code></a></td>
             <td><code>src/meta.ps1</code></td>
             <td>Clear terminal screen in CMD and PowerShell</td>
           </tr>
           <tr>
-            <td><code>lindows</code></td>
+            <td><a href="commands/lindows.html"><code>lindows(1)</code></a></td>
             <td><code>src/meta.ps1</code></td>
             <td>Meta CLI (<code>lindows list</code>, <code>lindows doctor</code>, <code>lindows --version</code>)</td>
           </tr>
@@ -308,11 +143,11 @@
     </section>
 
     <section>
-      <h2>Pairing with <code>uutils.coreutils</code> &amp; <code>ripgrep</code></h2>
+      <h2>Pairing with <code>Microsoft.Coreutils</code> &amp; <code>ripgrep</code></h2>
       <p>
-        By default, <code>install.ps1</code> also ensures <code>uutils.coreutils</code> and <code>ripgrep</code> are installed via <code>winget</code> so your Windows machine has the complete GNU/Linux toolset:
+        By default, <code>install.ps1</code> also ensures <code>Microsoft.Coreutils</code> and <code>ripgrep</code> are installed via <code>winget</code> so your Windows machine has the complete GNU/Linux toolset:
       </p>
-      <pre><code>winget install uutils.coreutils
+      <pre><code>winget install Microsoft.Coreutils
 winget install BurntSushi.ripgrep.MSVC</code></pre>
       <p>
         If you only want the Lindows PowerShell/CMD shims without running <code>winget</code>, pass <code>-SkipExtras</code> to <code>.\install.ps1</code>.

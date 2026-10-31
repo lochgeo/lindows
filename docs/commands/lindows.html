@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LINDOWS(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a class="active" href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>LINDOWS(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>LINDOWS(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">lindows &mdash; meta command for inspecting and verifying Lindows</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>lindows [list | doctor | --help | --version]</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Meta CLI utility for listing all commands provided by Lindows and checking installation health (<code>%LOCALAPPDATA%\lindows</code>, User <code>PATH</code> shims, and PowerShell profile hook).
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUBCOMMANDS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">list</div><div class="man-opt-desc">List all commands provided by Lindows with a short description of each.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">doctor</div><div class="man-opt-desc">Verify that the Lindows module, CMD shims on User <code>PATH</code>, and PowerShell <code>$PROFILE</code> hook are properly configured.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--version</div><div class="man-opt-desc">Print the installed Lindows version.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--help</div><div class="man-opt-desc">Print usage instructions.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">lindows list</div><div class="man-ex-comment"># List all available Lindows commands</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">lindows doctor</div><div class="man-ex-comment"># Run installation health checks</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/meta.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

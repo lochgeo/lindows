@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PKILL(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a class="active" href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>PKILL(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>PKILL(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">pkill, killall &mdash; look up or terminate processes by name or command line</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>pkill [-f] [-i] [-x] [-l] [-c] [-9] PATTERN</code><br />
+          <code>killall [OPTIONS] PATTERN</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Finds and terminates running Windows processes matching <em>PATTERN</em>. Both <code>pkill</code> and <code>killall</code> are exported and shimmed. Never kills the current PowerShell process (<code>$PID</code>).
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-f, --full</div><div class="man-opt-desc">Match <em>PATTERN</em> against the full process command line (via WMI/CIM <code>Win32_Process</code>), not just the executable name.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-i, --ignore-case</div><div class="man-opt-desc">Match case-insensitively.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-x, --exact</div><div class="man-opt-desc">Require an exact match of the process name.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-l, --list-name</div><div class="man-opt-desc">List matching process IDs and process names without terminating them.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-c, --count</div><div class="man-opt-desc">Print a count of matching processes without terminating them.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-9, -15, -KILL, -TERM</div><div class="man-opt-desc">Accepted for POSIX signal flag compatibility.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">pkill -f "vite"</div><div class="man-ex-comment"># Stop any background node process running vite</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">pkill -l node</div><div class="man-ex-comment"># List matching node processes and PIDs without killing them</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/proc.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

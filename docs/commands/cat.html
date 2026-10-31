@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAT(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a class="active" href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>CAT(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>CAT(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">cat &mdash; concatenate files and print on the standard output</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>cat [-n] [-b] [-s] [-E] [FILE]...</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Concatenate <em>FILE</em>(s) to standard output. Replaces PowerShell's built-in <code>cat</code> alias (<code>Get-Content</code>) so Unix flags like <code>cat -n</code> and multi-file concatenation work without parameter binding errors.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-n, --number</div><div class="man-opt-desc">Number all output lines starting at 1.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-b, --number-nonblank</div><div class="man-opt-desc">Number nonempty output lines, overrides <code>-n</code>.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-s, --squeeze-blank</div><div class="man-opt-desc">Suppress repeated empty output lines.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-E, -e, -A, --show-ends</div><div class="man-opt-desc">Display <code>$</code> at the end of each line.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--help, --version</div><div class="man-opt-desc">Display help or version information and exit.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">cat -n Lindows.psm1</div><div class="man-ex-comment"># Print file contents with 1-based line numbers</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">cat part1.txt part2.txt</div><div class="man-ex-comment"># Concatenate multiple files to stdout</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/fs.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

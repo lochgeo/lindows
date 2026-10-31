@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LSOF(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a class="active" href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>LSOF(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>LSOF(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">lsof &mdash; list open network ports and associated processes on Windows</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>lsof [-i [:PORT]] [-t] [-p PID] [-P] [-n]</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Inspects active TCP/UDP connections on Windows (via <code>Get-NetTCPConnection</code> with fallback to <code>netstat -ano</code>) and resolves owning process names and PIDs. Essential when AI coding agents debug <code>EADDRINUSE</code> port conflicts.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-i [:PORT]</div><div class="man-opt-desc">Select network connections; optionally filter by local port (e.g. <code>-i :3000</code> or <code>-i:8080</code>).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-t</div><div class="man-opt-desc">Terse mode: output only process IDs (one per line), suitable for piping to <code>Stop-Process</code> or <code>kill</code>.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-p PID</div><div class="man-opt-desc">Filter connections owned by the specified process ID(s).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-P, -n</div><div class="man-opt-desc">Accepted for compatibility (numeric ports and host addresses).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--help, --version</div><div class="man-opt-desc">Display help or version information and exit.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">lsof -i :3000</div><div class="man-ex-comment"># Show which process is listening on port 3000</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">lsof -t -i :3000</div><div class="man-ex-comment"># Output only the PID listening on port 3000</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/proc.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

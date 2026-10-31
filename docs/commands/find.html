@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIND(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a class="active" href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>FIND(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>FIND(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">find &mdash; search for files and directories in a directory hierarchy</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>find [PATH...] [EXPRESSION]</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          <strong>find</strong> recursively walks the directory tree rooted at each given <em>PATH</em> (defaulting to <code>.</code>) and evaluates the given expression. Replaces the legacy Windows <code>C:\Windows\System32\find.exe</code> string-finder so Unix <code>find</code> expressions work natively.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-name PATTERN</div><div class="man-opt-desc">Base of file name matches shell wildcard PATTERN (case-sensitive, e.g. <code>"*.ps1"</code>).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-iname PATTERN</div><div class="man-opt-desc">Like <code>-name</code>, but the match is case-insensitive.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-path PATTERN, -wholename PATTERN</div><div class="man-opt-desc">Full relative path matches shell wildcard PATTERN.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-type f | d</div><div class="man-opt-desc">Filter by entry type: <code>f</code> for regular files, <code>d</code> for directories.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-maxdepth LEVELS</div><div class="man-opt-desc">Descend at most LEVELS (a non-negative integer) levels of directories below the starting points.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-mindepth LEVELS</div><div class="man-opt-desc">Do not apply any tests or actions at levels less than LEVELS.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-empty</div><div class="man-opt-desc">File is empty (0 bytes) or directory contains no entries.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">! , -not</div><div class="man-opt-desc">Negate the following <code>-name</code>, <code>-iname</code>, or <code>-path</code> pattern (also prunes matching directories).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-delete</div><div class="man-opt-desc">Delete matched files or directories.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-print</div><div class="man-opt-desc">Print the full file name on standard output (default action).</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">find . -name "*.ps1" -type f</div><div class="man-ex-comment"># Find all PowerShell files under current directory</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">find src -maxdepth 1 -type f</div><div class="man-ex-comment"># List files directly inside src/ without descending further</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">find . -not -path "*/.git/*" -type f</div><div class="man-ex-comment"># Find all files excluding .git directory</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/find.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKDIR(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a class="active" href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>MKDIR(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>MKDIR(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">mkdir &mdash; make directories</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>mkdir [-p] [-v] [-m MODE] DIRECTORY...</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Create the <em>DIRECTORY</em>(ies), if they do not already exist. Replaces PowerShell's default <code>mkdir</code> function where passing <code>-p</code> fails with an ambiguous parameter error.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-p, --parents</div><div class="man-opt-desc">No error if existing, make parent directories as needed.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-v, --verbose</div><div class="man-opt-desc">Print a message for each created directory.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-m MODE, --mode=MODE</div><div class="man-opt-desc">Accepted for POSIX compatibility (no-op on Windows).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--help, --version</div><div class="man-opt-desc">Display help or version information and exit.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">mkdir -p src/components/ui</div><div class="man-ex-comment"># Create nested directories without error if they already exist</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/fs.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

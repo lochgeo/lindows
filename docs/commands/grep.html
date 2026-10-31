@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GREP(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a class="active" href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>GREP(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>GREP(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">grep &mdash; print lines that match patterns in files or standard input</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>grep [OPTION]... PATTERNS [FILE]...</code><br />
+          <code>grep [OPTION]... -e PATTERNS ... [FILE]...</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          <strong>grep</strong> searches for <em>PATTERNS</em> in each <em>FILE</em> (or piped/redirected standard input when no file or <code>-</code> is given) and prints each line that matches. Implemented in <code>src/grep.ps1</code> using .NET regular expressions.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-E, --extended-regexp</div><div class="man-opt-desc">Interpret PATTERNS as extended regular expressions (default in Lindows).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-F, --fixed-strings</div><div class="man-opt-desc">Interpret PATTERNS as fixed literal strings instead of regular expressions.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-i, --ignore-case</div><div class="man-opt-desc">Ignore case distinctions in patterns and input data.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-v, --invert-match</div><div class="man-opt-desc">Invert the sense of matching, to select non-matching lines.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-w, --word-regexp</div><div class="man-opt-desc">Select only those lines containing matches that form whole words.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-x, --line-regexp</div><div class="man-opt-desc">Select only those matches that exactly match the whole line.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-n, --line-number</div><div class="man-opt-desc">Prefix each line of output with the 1-based line number within its input file.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-c, --count</div><div class="man-opt-desc">Suppress normal output; instead print a count of matching lines for each input file.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-l, --files-with-matches</div><div class="man-opt-desc">Suppress normal output; instead print the name of each input file from which output would normally have been printed.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-L, --files-without-match</div><div class="man-opt-desc">Suppress normal output; instead print the name of each input file from which no output would normally have been printed.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-o, --only-matching</div><div class="man-opt-desc">Print only the matched (non-empty) parts of a matching line, with each such part on a separate output line.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-r, -R, --recursive</div><div class="man-opt-desc">Read all files under each directory, recursively.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-H, --with-filename</div><div class="man-opt-desc">Print the file name for each match (default when there is more than one file or <code>-r</code>).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-h, --no-filename</div><div class="man-opt-desc">Suppress the prefixing of file names on output.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-q, --quiet, --silent</div><div class="man-opt-desc">Quiet; do not write anything to standard output. Exit immediately with zero status if any match is found.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-s, --no-messages</div><div class="man-opt-desc">Suppress error messages about nonexistent or unreadable files.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-e PATTERN, --regexp=PATTERN</div><div class="man-opt-desc">Use PATTERN as the pattern; can be specified multiple times to match any of the given patterns.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-m NUM, --max-count=NUM</div><div class="man-opt-desc">Stop reading a file after NUM matching lines.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-A NUM, --after-context=NUM</div><div class="man-opt-desc">Print NUM lines of trailing context after matching lines.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-B NUM, --before-context=NUM</div><div class="man-opt-desc">Print NUM lines of leading context before matching lines.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-C NUM, -NUM, --context=NUM</div><div class="man-opt-desc">Print NUM lines of leading and trailing output context.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--include=GLOB</div><div class="man-opt-desc">Search only files whose base name matches GLOB when recursing.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--exclude=GLOB</div><div class="man-opt-desc">Skip any file whose base name matches GLOB when recursing.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--exclude-dir=DIR</div><div class="man-opt-desc">Skip any directory matching DIR when recursing (e.g. <code>node_modules</code>, <code>.git</code>).</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">grep -rn "Invoke-Lindows" src/</div><div class="man-ex-comment"># Search recursively with line numbers</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">grep -i -C 2 "error" app.log</div><div class="man-ex-comment"># Case-insensitive search with 2 lines of context</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">git status -s | grep -v "README"</div><div class="man-ex-comment"># Filter piped output using inverted match</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/grep.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TREE(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a class="active" href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>TREE(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>TREE(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">tree &mdash; list contents of directories in a tree-like format</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>tree [-adFfistrhD] [-L level] [-P pattern] [-I pattern] [-o file] [--dirsfirst] [--charset=ascii|utf8] [DIR...]</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Recursive directory listing program that produces a depth-indented listing of files. Unlike Windows' built-in <code>tree.com</code>, Lindows <strong>tree</strong> supports Unix flags like <code>-L</code> (max depth), <code>-I</code> (ignore pattern), <code>-a</code> (hidden files), and file sizes.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-a</div><div class="man-opt-desc">Include hidden and dot-prefixed files.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-d</div><div class="man-opt-desc">List directories only.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-L level</div><div class="man-opt-desc">Max display depth of the directory tree.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-P pattern</div><div class="man-opt-desc">List only those files that match the wild-card pattern.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-I pattern</div><div class="man-opt-desc">Do not list those files or directories that match the wild-card pattern.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--dirsfirst</div><div class="man-opt-desc">List directories before files.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-f</div><div class="man-opt-desc">Print the full path prefix for each file.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-F</div><div class="man-opt-desc">Append <code>/</code> for directories and <code>*</code> for executable files.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-i</div><div class="man-opt-desc">Makes tree not print the indentation lines.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-s</div><div class="man-opt-desc">Print the size of each file in bytes.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-h</div><div class="man-opt-desc">Print the size of each file in a human-readable way (K, M, G).</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-D</div><div class="man-opt-desc">Print the date of the last modification time.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-t</div><div class="man-opt-desc">Sort the output by last modification time instead of alphabetically.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-r</div><div class="man-opt-desc">Sort the output in reverse order.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-o FILE</div><div class="man-opt-desc">Send output to FILE.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--charset=ascii|utf8</div><div class="man-opt-desc">Select line drawing characters (defaults to <code>utf8</code>).</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">tree -L 2 -I "node_modules"</div><div class="man-ex-comment"># Show 2 levels deep, ignoring node_modules</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">tree --dirsfirst -s -h src</div><div class="man-ex-comment"># Show src/ with human-readable sizes and directories first</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/tree.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

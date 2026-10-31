@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAN(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a class="active" href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>MAN(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>MAN(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">man &mdash; display manual pages for Lindows commands and Windows equivalents</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>man [-f] [-k] [-w] [-d] [-l FILE] NAME...</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Displays embedded manual pages for all Lindows commands, or provides the PowerShell / <code>Microsoft.Coreutils</code> equivalent for other Unix commands.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-f, --whatis</div><div class="man-opt-desc">Display a one-line summary from the manual page if available.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-k, --apropos</div><div class="man-opt-desc">Search all embedded manual pages for keyword and print summaries.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-w, --where, --path</div><div class="man-opt-desc">Show whether the manual page exists rather than displaying it.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-l FILE, --local FILE</div><div class="man-opt-desc">Display a local file as a manual page.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-h, --help, --version</div><div class="man-opt-desc">Display help or version information and exit.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">man grep</div><div class="man-ex-comment"># View the full manual page for grep</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">man -f head</div><div class="man-ex-comment"># Print a one-line summary for head</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">man -k port</div><div class="man-ex-comment"># Search manual pages mentioning "port"</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/man.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

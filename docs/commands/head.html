@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEAD(1) — Lindows Manual Page</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="man-nav">
+      <a href="../index.html">&larr; Back to Lindows Docs</a>
+      <div class="man-nav-links">
+        <a href="grep.html">grep</a>
+        <a href="find.html">find</a>
+        <a class="active" href="head.html">head</a>
+        <a href="tail.html">tail</a>
+        <a href="wc.html">wc</a>
+        <a href="touch.html">touch</a>
+        <a href="cat.html">cat</a>
+        <a href="rm.html">rm</a>
+        <a href="mkdir.html">mkdir</a>
+        <a href="lsof.html">lsof</a>
+        <a href="pkill.html">pkill</a>
+        <a href="which.html">which</a>
+        <a href="tree.html">tree</a>
+        <a href="man.html">man</a>
+        <a href="clear.html">clear</a>
+        <a href="lindows.html">lindows</a>
+      </div>
+    </nav>
+
+    <div class="man-terminal">
+      <div class="man-banner">
+        <span>HEAD(1)</span>
+        <span>Lindows Manual Pages</span>
+        <span>HEAD(1)</span>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">NAME</div>
+        <div class="man-sec-body">head &mdash; output the first part of files or piped input</div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SYNOPSIS</div>
+        <div class="man-sec-body">
+          <code>head [-n [-]NUM] [-c [-]NUM] [-q] [-v] [FILE]...</code>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">DESCRIPTION</div>
+        <div class="man-sec-body">
+          Print the first 10 lines of each <em>FILE</em> to standard output. With more than one <em>FILE</em>, precede each with a header giving the file name. With no <em>FILE</em>, or when <em>FILE</em> is <code>-</code>, read standard input or PowerShell pipeline objects.
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">SUPPORTED FLAGS &amp; OPTIONS</div>
+        <div class="man-sec-body">
+          <div class="man-opt"><div class="man-opt-flag">-n [-]NUM, --lines=[-]NUM, -NUM</div><div class="man-opt-desc">Print the first NUM lines instead of the first 10; with a leading <code>-</code>, print all but the last NUM lines of each file.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-c [-]NUM, --bytes=[-]NUM</div><div class="man-opt-desc">Print the first NUM bytes of each file; with a leading <code>-</code>, print all but the last NUM bytes.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-q, --quiet, --silent</div><div class="man-opt-desc">Never print headers giving file names.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-v, --verbose</div><div class="man-opt-desc">Always print headers giving file names.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">-h, --help</div><div class="man-opt-desc">Display help message and exit.</div></div>
+          <div class="man-opt"><div class="man-opt-flag">--version</div><div class="man-opt-desc">Output version information and exit.</div></div>
+        </div>
+      </div>
+
+      <div class="man-sec">
+        <div class="man-sec-title">EXAMPLES</div>
+        <div class="man-sec-body">
+          <div class="man-ex"><div class="man-ex-cmd">head -n 20 README.md</div><div class="man-ex-comment"># Print the first 20 lines of README.md</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">head -n -5 data.txt</div><div class="man-ex-comment"># Print all lines except the last 5 lines</div></div>
+          <div class="man-ex"><div class="man-ex-cmd">git log --oneline | head -n 5</div><div class="man-ex-comment"># Take the first 5 lines from a pipeline</div></div>
+        </div>
+      </div>
+
+      <div class="man-banner" style="border-bottom: none; border-top: 1px dashed var(--border); padding-top: 0.75rem; padding-bottom: 0; margin-bottom: 0;">
+        <span>Lindows 1.0.0</span>
+        <span>2026</span>
+        <span>src/head.ps1</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
