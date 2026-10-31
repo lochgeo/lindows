@@ -2,13 +2,31 @@
 
 Lightweight Linux commands made available in Windows (PowerShell + CMD), organized into small modular scripts.
 
+## One-Command Install (Recommended)
+
+Install **Lindows** (`grep`, `head`, `tail`, `which`, `tree`, `man`, `clear`), **GNU Coreutils** (`uutils.coreutils`), and **ripgrep** (`rg`) in a single command:
+
+```powershell
+irm https://raw.githubusercontent.com/lochgeo/lindows/main/install.ps1 | iex
+```
+
+Or if you have already cloned this repo:
+
+```powershell
+.\install.ps1
+```
+
+*(Pass `-SkipExtras` to `.\install.ps1` if you only want the Lindows shims without running `winget` for `uutils.coreutils` and `ripgrep`.)*
+
+---
+
 ## Motivation
 
 When running AI coding agents on Windows, almost all of them naturally assume they are operating in a Linux or macOS environment. They frequently invoke standard Unix commands—such as `grep`, `head`, `tail`, `which`, `tree`, etc.—expecting them to just work, and fail or waste turns when those commands aren't found in PowerShell or `cmd.exe`.
 
 **Lindows** is a lightweight shim project built to bridge that gap so coding agents (and developers) running natively on Windows can find and run the Unix tools they expect.
 
-## Commands Included
+## Commands Included in Lindows
 
 | Command | Source File | Description |
 | :--- | :--- | :--- |
@@ -23,7 +41,7 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 
 ## Pairing with `uutils` Coreutils & `ripgrep`
 
-For the rest of the standard GNU/Linux toolset (`ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, etc.) and fast code search (`rg`), you can install the native Windows Rust ports via `winget`:
+The installer automatically installs `uutils.coreutils` and `ripgrep` via `winget` so your environment also has the rest of the standard GNU/Linux toolset (`ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, `rg`, etc.). You can also install them manually:
 
 ```powershell
 # GNU coreutils (ls, cat, cp, mv, rm, wc, sort, uniq, cut, tr, etc.)
@@ -33,14 +51,12 @@ winget install uutils.coreutils
 winget install BurntSushi.ripgrep.MSVC
 ```
 
-Lindows works standalone with zero dependencies (providing `grep`, `head`, `tail`, `which`, `tree`, `man`, `clear` out of the box) or side-by-side with `uutils.coreutils` and `ripgrep` across both PowerShell and CMD.
-
 ## Project Structure
 
 ```text
 lindows/
 ├── Lindows.psm1          # Root PowerShell module loader
-├── install.ps1           # Installs module, CMD shims, and PATH/profile hooks
+├── install.ps1           # One-step installer (Lindows + coreutils + ripgrep)
 ├── uninstall.ps1         # Cleanly removes Lindows
 ├── src/
 │   ├── common.ps1        # Shared stdin / file / pipeline readers
@@ -55,20 +71,12 @@ lindows/
     └── Lindows.Tests.ps1 # Automated test suite
 ```
 
-## Quick Start
+## Development & Testing
 
-### Import directly in PowerShell
 ```powershell
+# Load module into current session without installing
 Import-Module .\Lindows.psm1 -DisableNameChecking
-```
 
-### Install for PowerShell + CMD
-```powershell
-.\install.ps1
-```
-This copies the module to `%LOCALAPPDATA%\lindows`, creates `.cmd` shims in `%LOCALAPPDATA%\lindows\shims` (added to your User `PATH`), and hooks your PowerShell profile.
-
-### Run Tests
-```powershell
+# Run automated test suite
 pwsh -NoProfile -File .\tests\Lindows.Tests.ps1
 ```

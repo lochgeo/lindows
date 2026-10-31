@@ -2,7 +2,8 @@
 [CmdletBinding()]
 param(
     [switch]$NoProfile,
-    [switch]$NoPath
+    [switch]$NoPath,
+    [switch]$SkipExtras
 )
 
 $ErrorActionPreference = 'Stop'
@@ -14,8 +15,29 @@ New-Item -ItemType Directory -Path $installRoot -Force | Out-Null
 New-Item -ItemType Directory -Path $srcDir -Force | Out-Null
 New-Item -ItemType Directory -Path $shimsDir -Force | Out-Null
 
-Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Lindows.psm1') -Destination $installRoot -Force
-Copy-Item -Path (Join-Path $PSScriptRoot 'src\*.ps1') -Destination $srcDir -Force
+$srcFiles = @(
+    'common.ps1'
+    'grep.ps1'
+    'head.ps1'
+    'tail.ps1'
+    'which.ps1'
+    'tree.ps1'
+    'man.ps1'
+    'meta.ps1'
+)
+
+if ($PSScriptRoot -and (Test-Path -LiteralPath (Join-Path $PSScriptRoot 'Lindows.psm1'))) {
+    Write-Host "[..] Installing Lindows from local directory..."
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'Lindows.psm1') -Destination $installRoot -Force
+    Copy-Item -Path (Join-Path $PSScriptRoot 'src\*.ps1') -Destination $srcDir -Force
+} else {
+    Write-Host "[..] Downloading Lindows from GitHub..."
+    $baseUrl = 'https://raw.githubusercontent.com/lochgeo/lindows/main'
+    Invoke-RestMethod -Uri "$baseUrl/Lindows.psm1" -OutFile (Join-Path $installRoot 'Lindows.psm1')
+    foreach ($f in $srcFiles) {
+        Invoke-RestMethod -Uri "$baseUrl/src/$f" -OutFile (Join-Path $srcDir $f)
+    }
+}
 
 $shimCommands = @{
     'grep'    = 'Invoke-LindowsGrep'
@@ -46,6 +68,7 @@ if (-not $NoPath) {
     if ($parts -notcontains $shimsDir) {
         $newPath = ($parts + $shimsDir) -join ';'
         [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
+        $env:Path = "$env:Path;$shimsDir"
         Write-Host "[ok] Added $shimsDir to User PATH"
     } else {
         Write-Host "[ok] $shimsDir already in User PATH"
@@ -68,4 +91,17 @@ if (-not $NoProfile) {
     }
 }
 
+if (-not $SkipExtras) {
+    $winget = Get-Command winget.exe -ErrorAction SilentlyContinue
+    if ($winget) {
+        foreach ($pkg in @('uutils.coreutils', 'BurntSushi.ripgrep.MSVC')) {
+            Write-Host "[..] Ensuring $pkg is installed via winget..."
+            & winget.exe install --id $pkg --exact --accept-source-agreements --accept-package-agreements
+        }
+    } else {
+        Write-Host "[warn] winget not found; skipping uutils.coreutils and ripgrep install."
+    }
+}
+
+Import-Module (Join-Path $installRoot 'Lindows.psm1') -Force -DisableNameChecking -Global
 Write-Host "[ok] Lindows installed to $installRoot"
