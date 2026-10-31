@@ -68,6 +68,39 @@ try {
     $tr = (tree --charset=ascii $tmpDir) -join "`n"
     Assert-Equal 'tree lists files and directories' ($tr -match '1 directories, 2 files') $true
 
+    # find tests
+    $f1 = (find $tmpDir -name '*.txt' -type f) -join ','
+    Assert-Equal 'find -name *.txt -type f finds both files' (($f1 -match 'lines\.txt') -and ($f1 -match 'a\.txt')) $true
+
+    $f2 = (find $tmpDir -maxdepth 1 -type f) -join ','
+    Assert-Equal 'find -maxdepth 1 excludes sub/a.txt' (($f2 -match 'lines\.txt') -and ($f2 -notmatch 'a\.txt')) $true
+
+    # wc tests
+    $wc1 = ('one','two','three' | wc -l) -join ''
+    Assert-Equal 'wc -l pipeline line count' $wc1 '3'
+
+    $wc2 = (wc -l $sampleFile) -join ''
+    Assert-Equal 'wc -l file line count' ($wc2 -match '^5\s+') $true
+
+    # touch, mkdir -p, cat -n, rm -rf tests
+    $nestedDir = Join-Path $tmpDir 'deep\nested\dir'
+    mkdir -p $nestedDir
+    Assert-Equal 'mkdir -p creates nested directories' (Test-Path -LiteralPath $nestedDir -PathType Container) $true
+
+    $touchedFile = Join-Path $nestedDir 'empty.txt'
+    touch $touchedFile
+    Assert-Equal 'touch creates empty file' (Test-Path -LiteralPath $touchedFile -PathType Leaf) $true
+
+    $catNum = (cat -n $sampleFile | head -n 2) -join ','
+    Assert-Equal 'cat -n numbers output lines' ($catNum -match '1\s+line1,.*2\s+line2') $true
+
+    rm -rf (Join-Path $tmpDir 'deep')
+    Assert-Equal 'rm -rf removes nested directory tree' (Test-Path -LiteralPath (Join-Path $tmpDir 'deep')) $false
+
+    # pkill -c (count without killing)
+    $pk = (pkill -c pwsh) -join ''
+    Assert-Equal 'pkill -c returns numeric count' ($pk -match '^\d+$') $true
+
     # man tests
     $m1 = (man -f head) -join ''
     Assert-Equal 'man -f head summary' ($m1 -match 'head - output the first part of files') $true

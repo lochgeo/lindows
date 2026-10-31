@@ -4,7 +4,7 @@ Lightweight Linux commands made available in Windows (PowerShell + CMD), organiz
 
 ## One-Command Install (Recommended)
 
-Install **Lindows** (`grep`, `head`, `tail`, `which`, `tree`, `man`, `clear`), **GNU Coreutils** (`uutils.coreutils`), and **ripgrep** (`rg`) in a single command:
+Install **Lindows** (`grep`, `find`, `head`, `tail`, `wc`, `touch`, `cat`, `rm`, `mkdir`, `lsof`, `pkill`, `which`, `tree`, `man`, `clear`), **GNU Coreutils** (`uutils.coreutils`), and **ripgrep** (`rg`) in a single command:
 
 ```powershell
 irm https://raw.githubusercontent.com/lochgeo/lindows/main/install.ps1 | iex
@@ -22,7 +22,7 @@ Or if you have already cloned this repo:
 
 ## Motivation
 
-When running AI coding agents on Windows, almost all of them naturally assume they are operating in a Linux or macOS environment. They frequently invoke standard Unix commands—such as `grep`, `head`, `tail`, `which`, `tree`, etc.—expecting them to just work, and fail or waste turns when those commands aren't found in PowerShell or `cmd.exe`.
+When running AI coding agents on Windows, almost all of them naturally assume they are operating in a Linux or macOS environment. They frequently invoke standard Unix commands—such as `grep`, `find . -name "*.ts"`, `head`, `tail`, `wc -l`, `rm -rf`, `mkdir -p`, `lsof -i :3000`, etc.—expecting them to just work, and fail or waste turns when those commands aren't found or collide with incompatible Windows built-ins (`FIND.EXE`, PowerShell's `rm`/`mkdir`/`cat` aliases).
 
 **Lindows** is a lightweight shim project built to bridge that gap so coding agents (and developers) running natively on Windows can find and run the Unix tools they expect.
 
@@ -31,8 +31,16 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 | Command | Source File | Description |
 | :--- | :--- | :--- |
 | `grep` | `src/grep.ps1` | Search for patterns in files or piped input (`-i`, `-v`, `-n`, `-c`, `-l`, `-r`, `-F`, `-E`, `-w`, `-A`/`-B`/`-C`) |
+| `find` | `src/find.ps1` | Search directory trees (`-name`, `-iname`, `-path`, `-type f\|d`, `-maxdepth`, `-mindepth`, `-not`/`!`, `-empty`, `-delete`) |
 | `head` | `src/head.ps1` | Output the first part of files or piped input (`-n`, `-c`, `-q`, `-v`) |
 | `tail` | `src/tail.ps1` | Output the last part of files or piped input (`-n`, `-n +K`, `-c`, `-f`, `-q`, `-v`) |
+| `wc` | `src/wc.ps1` | Count lines, words, characters, and bytes (`-l`, `-w`, `-c`, `-m`) |
+| `touch` | `src/touch.ps1` | Create empty files or update file timestamps (`-c`, `-a`, `-m`) |
+| `cat` | `src/fs.ps1` | Concatenate and print files with Unix flags (`-n`, `-b`, `-s`, `-E`) |
+| `rm` | `src/fs.ps1` | Remove files and directories with Unix flags (`rm -rf`, `rm -f`, `rm -r`) |
+| `mkdir` | `src/fs.ps1` | Create directories with Unix flags (`mkdir -p`, `mkdir -v`) |
+| `lsof` | `src/proc.ps1` | List open network ports and owning PIDs (`lsof -i :3000`, `lsof -t -i :3000`, `lsof -p PID`) |
+| `pkill` / `killall` | `src/proc.ps1` | Find or stop processes by name or command line (`pkill -f`, `pkill -l`, `pkill -c`) |
 | `which` | `src/which.ps1` | Locate executables on Windows `PATH` (`-a`, `-i` for PowerShell aliases) |
 | `tree` | `src/tree.ps1` | Recursive directory tree viewer (`-a`, `-d`, `-L`, `-P`, `-I`, `--dirsfirst`, `-h`, `-s`, `-D`) |
 | `man` | `src/man.ps1` | View manual pages (`-f`, `-k`, `-w`) and PowerShell equivalents |
@@ -41,10 +49,10 @@ When running AI coding agents on Windows, almost all of them naturally assume th
 
 ## Pairing with `uutils` Coreutils & `ripgrep`
 
-The installer automatically installs `uutils.coreutils` and `ripgrep` via `winget` so your environment also has the rest of the standard GNU/Linux toolset (`ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, `rg`, etc.). You can also install them manually:
+The installer automatically installs `uutils.coreutils` and `ripgrep` via `winget` so your environment also has the rest of the standard GNU/Linux toolset (`ls`, `cp`, `mv`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, `rg`, etc.). You can also install them manually:
 
 ```powershell
-# GNU coreutils (ls, cat, cp, mv, rm, wc, sort, uniq, cut, tr, etc.)
+# GNU coreutils (ls, cp, mv, sort, uniq, cut, tr, etc.)
 winget install uutils.coreutils
 
 # ripgrep (rg)
@@ -61,8 +69,13 @@ lindows/
 ├── src/
 │   ├── common.ps1        # Shared stdin / file / pipeline readers
 │   ├── grep.ps1          # grep command
+│   ├── find.ps1          # find command
 │   ├── head.ps1          # head command
 │   ├── tail.ps1          # tail command
+│   ├── wc.ps1            # wc command
+│   ├── touch.ps1         # touch command
+│   ├── fs.ps1            # cat, rm, and mkdir commands
+│   ├── proc.ps1          # lsof and pkill/killall commands
 │   ├── which.ps1         # which command
 │   ├── tree.ps1          # tree command
 │   ├── man.ps1           # man command & embedded pages

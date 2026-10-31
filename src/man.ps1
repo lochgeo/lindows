@@ -10,16 +10,142 @@ SYNOPSIS
 
 DESCRIPTION
     Lindows provides essential Linux utilities natively on Windows:
-    grep, head, tail, which, tree, man, clear, and lindows.
+    grep, find, head, tail, wc, touch, cat, rm, mkdir, lsof, pkill,
+    which, tree, man, clear, and lindows.
 
 SUBCOMMANDS
     list      list the commands lindows provides
     doctor    check the installation (PATH, profile hook, shims)
 
 SEE ALSO
-    grep(1), head(1), tail(1), which(1), tree(1), man(1), clear(1)
+    grep(1), find(1), head(1), tail(1), wc(1), touch(1), cat(1), rm(1),
+    mkdir(1), lsof(1), pkill(1), which(1), tree(1), man(1), clear(1)
 
 Lindows 1.0.0                    2026                          LINDOWS(1)
+'@
+'find' = @'
+FIND(1)                         User Commands                        FIND(1)
+
+NAME
+    find - search for files in a directory hierarchy
+
+SYNOPSIS
+    find [PATH...] [-name PATTERN] [-iname PATTERN] [-path PATTERN]
+         [-type f|d] [-maxdepth N] [-mindepth N] [-empty] [-not] [-delete]
+
+DESCRIPTION
+    Searches the directory tree rooted at each PATH (defaults to '.')
+    and evaluates the given expression.
+
+Lindows 1.0.0                    2026                            FIND(1)
+'@
+'wc' = @'
+WC(1)                           User Commands                          WC(1)
+
+NAME
+    wc - print newline, word, and byte counts for each file
+
+SYNOPSIS
+    wc [-l] [-w] [-c] [-m] [FILE]...
+
+DESCRIPTION
+    Print newline (-l), word (-w), char (-m), and byte (-c) counts for
+    each FILE or standard input.
+
+Lindows 1.0.0                    2026                              WC(1)
+'@
+'touch' = @'
+TOUCH(1)                        User Commands                       TOUCH(1)
+
+NAME
+    touch - change file timestamps or create empty files
+
+SYNOPSIS
+    touch [-c] [-a] [-m] FILE...
+
+DESCRIPTION
+    Update the access and modification times of each FILE to the current
+    time. Creates empty files if they do not exist (unless -c is passed).
+
+Lindows 1.0.0                    2026                           TOUCH(1)
+'@
+'cat' = @'
+CAT(1)                          User Commands                         CAT(1)
+
+NAME
+    cat - concatenate files and print on the standard output
+
+SYNOPSIS
+    cat [-n] [-b] [-s] [-E] [FILE]...
+
+DESCRIPTION
+    Concatenate FILE(s) or standard input to standard output. Supports
+    line numbering (-n, -b), squeezing blank lines (-s), and showing line
+    endings (-E).
+
+Lindows 1.0.0                    2026                             CAT(1)
+'@
+'rm' = @'
+RM(1)                           User Commands                          RM(1)
+
+NAME
+    rm - remove files or directories
+
+SYNOPSIS
+    rm [-r] [-f] [-v] FILE...
+
+DESCRIPTION
+    Remove (unlink) the FILE(s). Supports Unix-style combined flags like
+    rm -rf and rm -f without failing in PowerShell.
+
+Lindows 1.0.0                    2026                              RM(1)
+'@
+'mkdir' = @'
+MKDIR(1)                        User Commands                       MKDIR(1)
+
+NAME
+    mkdir - make directories
+
+SYNOPSIS
+    mkdir [-p] [-v] DIRECTORY...
+
+DESCRIPTION
+    Create the DIRECTORY(ies), if they do not already exist. Supports
+    mkdir -p to create parent directories without error.
+
+Lindows 1.0.0                    2026                           MKDIR(1)
+'@
+'lsof' = @'
+LSOF(1)                         User Commands                        LSOF(1)
+
+NAME
+    lsof - list open network ports and owning processes
+
+SYNOPSIS
+    lsof [-i [:PORT]] [-t] [-p PID]
+
+DESCRIPTION
+    Lists active TCP/UDP network connections and their owning PIDs on
+    Windows. Use lsof -i :3000 to inspect port 3000, or lsof -t -i :3000
+    to output only the PID.
+
+Lindows 1.0.0                    2026                            LSOF(1)
+'@
+'pkill' = @'
+PKILL(1)                        User Commands                       PKILL(1)
+
+NAME
+    pkill - look up or signal processes based on name and command line
+
+SYNOPSIS
+    pkill [-f] [-i] [-x] [-l] [-c] PATTERN
+
+DESCRIPTION
+    Terminates processes matching PATTERN. Use -f to match against the
+    full command line, or -l to list matching processes without stopping
+    them.
+
+Lindows 1.0.0                    2026                           PKILL(1)
 '@
 'grep' = @'
 GREP(1)                         User Commands                        GREP(1)

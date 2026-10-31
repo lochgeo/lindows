@@ -11,7 +11,7 @@ function Invoke-LindowsMeta {
         '' {
             Write-Output @"
 Lindows $script:LindowsVersion - Linux commands for Windows (PowerShell + CMD).
-Provided: grep, head, tail, which, tree, man, clear, lindows
+Provided: grep, find, head, tail, wc, touch, cat, rm, mkdir, lsof, pkill, which, tree, man, clear, lindows
 Use 'lindows list', 'lindows doctor', or '<command> --help'.
 "@
             $global:LASTEXITCODE = 0
@@ -19,8 +19,16 @@ Use 'lindows list', 'lindows doctor', or '<command> --help'.
         'list' {
             Write-Output @"
 grep     - search for patterns in files or input
+find     - search for files in a directory hierarchy
 head     - output the first part of files
 tail     - output the last part of files
+wc       - print line, word, and byte counts
+touch    - create empty files or update timestamps
+cat      - concatenate and print files (with -n, -b, -s, -E)
+rm       - remove files or directories (supports -r, -f, -rf)
+mkdir    - create directories (supports -p)
+lsof     - list open network ports and processes (e.g. lsof -i :3000)
+pkill    - find or stop processes by name or command line (-f, -l)
 which    - locate commands on PATH
 tree     - recursive directory tree
 man      - manual pages (embedded) + PowerShell pointers
