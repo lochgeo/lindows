@@ -2,6 +2,8 @@
 
 Lightweight Linux commands made available in Windows (PowerShell + CMD), organized into small modular scripts.
 
+🌐 **Documentation & Project Page:** [https://lochgeo.github.io/lindows/](https://lochgeo.github.io/lindows/)
+
 ## One-Command Install (Recommended)
 
 Install **Lindows** (`grep`, `find`, `head`, `tail`, `wc`, `touch`, `cat`, `rm`, `mkdir`, `lsof`, `pkill`, `which`, `tree`, `man`, `clear`), **GNU Coreutils** (`uutils.coreutils`), and **ripgrep** (`rg`) in a single command:
@@ -66,6 +68,8 @@ lindows/
 ├── Lindows.psm1          # Root PowerShell module loader
 ├── install.ps1           # One-step installer (Lindows + coreutils + ripgrep)
 ├── uninstall.ps1         # Cleanly removes Lindows
+├── docs/
+│   └── index.html        # GitHub Pages documentation site
 ├── src/
 │   ├── common.ps1        # Shared stdin / file / pipeline readers
 │   ├── grep.ps1          # grep command
