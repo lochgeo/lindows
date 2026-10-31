@@ -2,6 +2,12 @@
 
 Lightweight Linux commands made available in Windows (PowerShell + CMD), organized into small modular scripts.
 
+## Motivation
+
+When running AI coding agents on Windows, almost all of them naturally assume they are operating in a Linux or macOS environment. They frequently invoke standard Unix commands—such as `grep`, `head`, `tail`, `which`, `tree`, etc.—expecting them to just work, and fail or waste turns when those commands aren't found in PowerShell or `cmd.exe`.
+
+**Lindows** is a lightweight shim project built to bridge that gap so coding agents (and developers) running natively on Windows can find and run the Unix tools they expect.
+
 ## Commands Included
 
 | Command | Source File | Description |
@@ -13,6 +19,23 @@ Lightweight Linux commands made available in Windows (PowerShell + CMD), organiz
 | `man` | `src/man.ps1` | View manual pages (`-f`, `-k`, `-w`) and PowerShell equivalents |
 | `clear` | `src/meta.ps1` | Clear the terminal screen (`cls` shim in CMD, `Clear-Host` in PowerShell) |
 | `lindows` | `src/meta.ps1` | Meta CLI (`lindows list`, `lindows doctor`, `lindows --version`) |
+
+## Pairing with `uutils` Coreutils / Findutils / Grep
+
+For the rest of the standard GNU/Linux toolset (`grep`, `find`, `xargs`, `ls`, `cat`, `cp`, `mv`, `rm`, `wc`, `sort`, `uniq`, `cut`, `tr`, `basename`, `dirname`, etc.), you can install the native Windows Rust ports via `winget`:
+
+```powershell
+# GNU coreutils (ls, cat, cp, mv, rm, wc, sort, uniq, cut, tr, head, tail, etc.)
+winget install uutils.coreutils
+
+# GNU findutils (find, xargs, locate)
+winget install uutils.findutils
+
+# grep / ripgrep
+winget install BurntSushi.ripgrep.MSVC
+```
+
+Lindows fills in the remaining everyday commands (`which`, `tree`, `man`, `clear`, plus zero-dependency `head` and `tail` shims) that works seamlessly across both PowerShell and CMD.
 
 ## Project Structure
 
